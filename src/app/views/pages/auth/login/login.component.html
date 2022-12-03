@@ -1,0 +1,74 @@
+<div class="row w-100 mx-0 auth-page">
+  <div class="col-md-8 col-xl-6 mx-auto">
+    <div class="card">
+      <div class="row">
+        <div class="col-md-4 pe-md-0">
+          <!-- <div class="auth-side-wrapper" [ngStyle]="{ 'background-image': 'url(https://via.placeholder.com/219x452)' }"> -->
+          <div class="auth-side-wrapper" [ngStyle]="{ 'background-image': 'url(assets/images/others/SCM.jpeg)' }">
+
+          </div>
+        </div>
+        <div class="col-md-8 ps-md-0">
+          <div class="auth-form-wrapper px-4 py-5">
+            <a routerLink="." class="nobleui-logo d-block mb-2">POiSE<span> v2.0</span></a>
+            <h5 class="text-muted fw-normal mb-4">Welcome back!</h5>
+            <form [formGroup]="form" #f="ngForm" (ngSubmit)="login(f['value'])" class="forms-sample">
+              <div formGroupName="account">  
+                <div class="form-group">
+                  <div *ngIf="form.errors" class="alert alert-danger">
+                    The username or password is invalid.
+                  </div>                  
+                  <div class="mb-3">
+                    <input
+                      formControlName="username"
+                      id="username"
+                      type="text"
+                      placeholder="Username"
+                      autofocus
+                      class="form-control">
+                    <!-- <div *ngIf="username && username.pending">Checking for username...</div> -->
+                    <div *ngIf="username && username.touched && username.invalid && username.errors" class="alert alert-danger">
+                      <div *ngIf="username.errors['required']">Username is required.</div>
+                      <div *ngIf="username.errors['minlength']">Username should be minimum {{ username.errors['minlength'].requiredLength }} characters.</div>
+                      <div *ngIf="username.errors['cannotContainSpace']">Username cannot contain space.</div>
+                      <!-- <div *ngIf="username.errors['shouldBeUnique']">Username cannot be found.</div> -->
+                    </div>                      
+                  </div>
+                </div>
+                <div class="form-group">  
+                  <div class="mb-3">
+                    <input
+                      formControlName="password"
+                      id="password"
+                      type="password"
+                      placeholder="Password"
+                      autocomplete="current-password"
+                      class="form-control">
+                      <div *ngIf="password && password.touched && password.invalid" class="alert alert-danger">Password is required.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="authCheck">
+                <label class="form-check-label" for="authCheck">
+                  Remember me
+                </label>
+              </div>
+              <div>
+                <!-- <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0" (click)="onLoggedin($event)">Login</button> -->
+                <button type="submit" class="btn btn-primary me-2 mb-2 mb-md-0">Login</button>
+                <!--
+                <button type="button" class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
+                  <i class="feather icon-twitter btn-icon-prepend"></i>
+                  Login with twitter
+                </button>
+              -->  
+              </div>
+              <!-- <a routerLink="/auth/register" class="d-block mt-3 text-muted">Not a user? Sign up</a> -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
